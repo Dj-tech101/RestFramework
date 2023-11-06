@@ -1,0 +1,9 @@
+{
+"createProject":"/api/order-center/project/saveProject",
+"getProject":"/api/order-center/retrieve/project",
+"updateProject":"api/order-center/project/updateProjectName",
+"deleteProject":"/api/order-center/project/deleteProject",
+"getbrandDetails":"/api/order-center/product/list",
+"getRaynorDetails":"/api/order-center/product/modelList",
+"getModelList200":"/api/order-center/product/modelDetails"
+}

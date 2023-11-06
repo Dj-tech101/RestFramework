@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Date: Sun, 05 Nov 2023 17:30:19 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 96
+Connection: keep-alive
+Server: nginx/1.14.0 (Ubuntu)
+X-Powered-By: Express
+ETag: W/"60-+Zkobj+h47fMmo9oqLaLoS6TbR4"
+
+{
+    "data": null,
+    "type": "success",
+    "message": "Project Deleted",
+    "status_msg": "OK",
+    "status_code": "200"
+}
