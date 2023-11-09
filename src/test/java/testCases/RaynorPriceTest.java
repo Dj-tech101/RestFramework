@@ -1,6 +1,7 @@
 package testCases;
 
 import java.io.IOException;
+
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import ModelListResponse.json22222.DOOROPENINGWIDTHHEIGHTPRICE;
 import ProjectApi.endpoints;
 import RaynorFabricDoorResponse.Model;
 import RaynorFabricDoorResponse.Raynor;
+import static io.restassured.RestAssured.given;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import modeRc300_Price.rc300Price;
@@ -117,7 +119,6 @@ public class RaynorPriceTest {
 
 				System.out.println("Actual Price is  " + dooropeningwidthheightprice.getPrice());
 				System.out.println("Expected Price is  " + expectedPrice);
-
 				Assert.assertEquals(dooropeningwidthheightprice.getPrice(), expectedString);
 			}
 		}
@@ -135,12 +136,8 @@ public class RaynorPriceTest {
 		List<Model> modellist = raynordata.getData().getListOfModels();
 
 		for (Model model : modellist) {
-
-			// System.out.println(model.getModelName());
 			if (model.getModelName().equals(modelName)) {
-
 				seriesId = model.getSeriesId();
-
 			}
 		}
 
@@ -154,7 +151,6 @@ public class RaynorPriceTest {
 		for (rc300Price model : rc300price) {
 
 			if (model.getDoorOpeningHeight().equals(opeHeight) && model.getDoorOpeningWidth().equals(opeWidth)) {
-
 				int actualPrice = model.getPrice();
 				int exprice = Integer.parseInt(expectedPrice);
 				System.out.println("Actual Price is  " + actualPrice);
@@ -169,39 +165,28 @@ public class RaynorPriceTest {
 	@Test(dependsOnMethods = "getRaynordetails", dataProvider = "rc300hdPrice")
 	public void getmodelList300hd(String brand, String modelName, String opeHeight, String opeWidth,
 			String expectedPrice) {
-		// String modelName = "RC300HD";
 
-		// getRaynordetails(brand);
 		int seriesId = 0;
 
 		List<Model> modellist = raynordata.getData().getListOfModels();
 
 		for (Model model : modellist) {
-
-			// System.out.println(model.getModelName());
 			if (model.getModelName().equals(modelName)) {
-
+			
 				seriesId = model.getSeriesId();
-
+		
 			}
 		}
-
 		Response response = endpoints.getModelList(seriesId);
-
 		JsonPath path = response.jsonPath();
-
 		List<rc300Price> rc300price = path.getList("data.listOfModelDetails.DOOR_OPENING_WIDTH_HEIGHT_PRICE",
 				rc300Price.class);
-
 		for (rc300Price model : rc300price) {
-
 			if (model.getDoorOpeningHeight().equals(opeHeight) && model.getDoorOpeningWidth().equals(opeWidth)) {
-
 				int actualPrice = model.getPrice();
 				int exprice = Integer.parseInt(expectedPrice);
 				System.out.println("Actual Price is  " + actualPrice);
 				System.out.println("Expected Price is  " + exprice);
-
 				Assert.assertEquals(actualPrice, exprice);
 			}
 		}
@@ -233,11 +218,7 @@ public class RaynorPriceTest {
 	@AfterTest
 	public void deleteProject() {
 
-		//System.out.println(" id is " + Project_CrudTest.root.getData().getId());
 		Response response = endpoints.deleteProject(projectid);
-//		
-//		
-//		System.out.println("*********** meassage is "+response.getStatusCode());
 		System.out.println(response.asPrettyString());
 	}
 
@@ -247,7 +228,6 @@ public class RaynorPriceTest {
 		String path = System.getProperty("user.dir") + "\\testData\\RC200_PriceTest.xlsx";
 		String sheetName = "Sheet1";
 		return DataUtils.dataContainer(path, sheetName);
-
 	}
 
 	@DataProvider(name = "rc300Price")
@@ -255,7 +235,6 @@ public class RaynorPriceTest {
 		String path = System.getProperty("user.dir") + "\\testData\\RC300_PriceTest.xlsx";
 		String sheetName = "Sheet1";
 		return DataUtils.dataContainer(path, sheetName);
-
 	}
 
 	@DataProvider(name = "rc300hdPrice")
