@@ -37,7 +37,7 @@ public class RaynorPriceTest {
 	public rc300Price rc300;
 	public static String projectid;
 
-	public ModelListResponse.json22222.Root model;
+	public static ModelListResponse.json22222.Root model;
 
 	@Test(dependsOnMethods = "testCases.Project_CrudTest.CreateProject")
 	public static void getBrandDetails() {
@@ -80,7 +80,7 @@ public class RaynorPriceTest {
 	}
 
 	@Test(dataProvider = "rc200Price", dependsOnMethods = "getRaynordetails")
-	public void getmodelList200(String brand, String modelName, String opeHeight, String opeWidth,
+	public static void getmodelList200(String brand, String modelName, String opeHeight, String opeWidth,
 			String expectedPrice) {
 
 		// getRaynordetails(brand);
@@ -155,7 +155,6 @@ public class RaynorPriceTest {
 				int exprice = Integer.parseInt(expectedPrice);
 				System.out.println("Actual Price is  " + actualPrice);
 				System.out.println("Expected Price is  " + exprice);
-
 				Assert.assertEquals(actualPrice, exprice);
 
 			}

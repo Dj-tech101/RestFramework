@@ -3,19 +3,23 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.Project_CrudTest">
+      <class name="testCases.Raynor_615Test">
         <methods>
-          <include name="CreateProject"/>
+          <include name="getModelList"/>
         </methods>
-      </class> <!-- testCases.Project_CrudTest -->
+      </class> <!-- testCases.Raynor_615Test -->
       <class name="testCases.AsiPriceTest">
         <methods>
-          <include name="getmodelList200" invocation-numbers="126"/>
           <include name="getAsidetails"/>
           <include name="deleteProject"/>
           <include name="getBrandDetails"/>
         </methods>
       </class> <!-- testCases.AsiPriceTest -->
+      <class name="testCases.Project_CrudTest">
+        <methods>
+          <include name="CreateProject"/>
+        </methods>
+      </class> <!-- testCases.Project_CrudTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
